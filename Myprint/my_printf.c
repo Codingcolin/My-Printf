@@ -55,8 +55,14 @@ int my_strlen(char* str)
 
   int put_str(char *str)
 {
-    int len = my_strlen(str);
-    return write(1, str , len);
+    if(str == NULL) 
+    {
+        return NULL;
+    } else {
+        int len = my_strlen(str);
+        return write(1, str , len);
+    }
+    
 }
 
 int print_hexa(long long num) 
@@ -64,7 +70,7 @@ int print_hexa(long long num)
     char hexiaDeci[100] = {'\0'};
     int i = 1;
     int temp;
-    
+    int result = 0;  
     while(num != 0) 
     {
         //printf("While loop starting %d\n", num);
@@ -78,7 +84,7 @@ int print_hexa(long long num)
         else {
             temp = 'a' + temp-10;
         }
-        hexiaDeci[i++] = temp;
+      result = hexiaDeci[i++] = temp;
         num = num / 16; 
     }
     int j = i - 1;
@@ -86,11 +92,11 @@ int print_hexa(long long num)
    while(j > 0) 
     {
         
-        my_putchar(hexiaDeci[j]);
+    result = my_putchar(hexiaDeci[j]);
         j--;
         
     }       
-    
+    return result;
 }
 
 int print_unint(unsigned int num)
@@ -191,6 +197,7 @@ int main() {
     printf("size is %d\n", result);
     result = printf("The octal value of this number is : %o\n", 80);
     printf("result should be %d\n", result);
+    my_printf("NULL STRING %s\n", (char*)NULL);
     return 0;
 }
 
