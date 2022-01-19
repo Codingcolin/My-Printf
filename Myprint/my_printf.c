@@ -57,7 +57,7 @@ int my_strlen(char* str)
 {
     if(str == NULL) 
     {
-        return NULL;
+        return 0;
     } else {
         int len = my_strlen(str);
         return write(1, str , len);
